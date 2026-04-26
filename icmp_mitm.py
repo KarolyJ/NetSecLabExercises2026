@@ -11,7 +11,7 @@ def spoof_pkt(pkt):
         data = pkt[TCP].payload.load
         print("*** %s, len=%d" % (data, len(data)))
 
-        newdata = data.replace(b'netsec', b'AAAAAAAAA')
+        newdata = data.replace(b'Alice', b'Trudy')
 
         print(newdata)
 
